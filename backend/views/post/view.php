@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use Codeception\Util\Template;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Post */
@@ -19,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '确认要删除吗?',
+                'confirm' => '确认要删除这篇文章吗?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -32,11 +33,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'content:ntext',
             'tags:ntext',
-            'status',
-            'create_time:datetime',
-            'update_time:datetime',
-            'author_id',
+//             'status',
+			['label'=>'状态',
+			'value'=>$model->status0->name,
+			],
+//             'create_time:datetime',
+        	['attribute'=>'create_time',
+        	'value'=>date('Y-m-d H:i:s',$model->create_time),
+        	],
+//             'update_time:datetime',
+        	['attribute'=>'update_time',
+        	'value'=>date('Y-m-d H:i:s',$model->update_time),
+        	],
+//             'author_id',
+			['attribute'=>'author_id',
+					'value'=>$model->author->nickname,
+			]
+        		
         ],
+    	'template'=>'<tr><th style="width:120px;">{label}</th><td>{value}</td>',
+    	'options'=>['class'=>'table table-striped table-bodered detail-view']
     ]) ?>
 
 </div>

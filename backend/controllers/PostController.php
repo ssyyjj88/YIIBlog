@@ -59,11 +59,12 @@ class PostController extends Controller
 // 		->bindValue(':status', 2)
 // 		->queryOne();
     	
- 		$post = Post::find()->where(['AND',['status'=>2],['author_id'=>1],['Like','title','yii2']])
-		->orderBy('id')->all();
+//  	$post = Post::find()->where(['AND',['status'=>2],['author_id'=>1],['Like','title','yii2']])
+// 		->orderBy('id')->all();
 		
-		    	var_dump($post);
-		    	exit(0);
+// 		var_dump($post);
+// 		exit(0);
+		
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
