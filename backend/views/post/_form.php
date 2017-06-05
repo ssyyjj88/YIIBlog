@@ -67,10 +67,6 @@ use yii\helpers\ArrayHelper;
 	->indexBy('id')
 	->column(),['prompt'=>'请选择状态']); ?>
 
-    <?= $form->field($model, 'create_time')->textInput() ?>
-
-    <?= $form->field($model, 'update_time')->textInput() ?>
-
     <?= $form->field($model, 'author_id')->textInput() ?>
 
     <div class="form-group">
