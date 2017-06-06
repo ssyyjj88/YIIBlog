@@ -12,14 +12,18 @@ use common\models\Post;
  */
 class PostSearch extends Post
 {
+	public function attributes()
+	{
+		return array_merge(parent::attributes(),['authorName']);
+	}
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'status', 'create_time', 'update_time', 'author_id'], 'integer'],
-            [['title', 'content', 'tags'], 'safe'],
+            [['id', 'status', 'create_time', 'update_time', 'author_id'], 'integer'],          
+            [['title', 'content', 'tags','authorName'], 'safe'],
         ];
     }
 

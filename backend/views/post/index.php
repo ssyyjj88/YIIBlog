@@ -8,7 +8,7 @@ use common\models\Poststatus;
 /* @var $searchModel common\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Posts';
+$this->title = '文章管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建文章', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,11 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         		'contentOptions'=>['width'=>'30px'],
         		],
             'title',
-//         	'author_id',
-			['attribute'=>'author_id',
-			'value'=>'author.nickname',
-  			 ],
-//             'content:ntext',
+        	//'author_id',
+        	['attribute'=>'authorName',
+        	'label'=>'作者',
+        	'value'=>'author.nickname',
+    		],
+           // 'content:ntext',
             'tags:ntext',
 //             'status',
         		['attribute'=>'status',
@@ -46,8 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
         				->column(),
         		],
             // 'create_time:datetime',
-            'update_time:datetime',
-            
+             //'update_time:datetime',
+             ['attribute'=>'update_time',
+             'format'=>['date','php:Y-m-d H:i:s'],
+        	],
+             
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
